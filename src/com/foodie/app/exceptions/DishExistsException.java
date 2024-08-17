@@ -1,11 +1,15 @@
 package com.foodie.app.exceptions;
 
-public class CustomerExistException extends Exception{
+public class DishExistsException extends Exception{
 
-	public CustomerExistException(String message) {
+	public DishExistsException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	
 	
 
 }

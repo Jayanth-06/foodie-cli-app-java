@@ -1,16 +1,18 @@
 package com.foodie.app.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.foodie.app.model.Customer;
 import com.foodie.app.util.CsvReader;
+import com.foodie.app.util.Factory;
 
 public class CustomerRepository {
 	private List<Customer> customersList;
 
 	public CustomerRepository() {
-		CsvReader csvReader = new CsvReader();
-		this.customersList = csvReader.readcustomersFromCsv();
+		
+		this.customersList = Factory.getCsvReader().readcustomersFromCsv();
 	}
 	public List<Customer> getAllCustomers(){
 		return this.customersList;
@@ -19,6 +21,8 @@ public class CustomerRepository {
 		this.customersList.add(customer);
 		return customer;
 	}
-	
+	public Optional<Customer> findCustomerById(String id){
+		return this.customersList.stream().filter(customer -> customer.getCustomerId().equals(id)).findFirst();
+	}
 
 }
